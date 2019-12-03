@@ -1,3 +1,4 @@
+
 import org.apache.spark._
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming._
@@ -7,7 +8,7 @@ import org.apache.spark.streaming.kafka.KafkaUtils
 object KafkaWordCount {
 
   def main(args:Array[String]){
-    StreamingExamples.setStreamingLogLevels()
+    //StreamingExamples.setStreamingLogLevels()
     val sc = new SparkConf().setAppName("KafkaWordCount").setMaster("local[2]")
     val ssc = new StreamingContext(sc,Seconds(10))
     ssc.checkpoint("file:///usr/local/spark/mycode/kafka/checkpoint") //设置检查点，如果存放在HDFS上面，则写成类似ssc.checkpoint("/user/hadoop/checkpoint")这种形式，但是，要启动Hadoop
